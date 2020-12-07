@@ -1,0 +1,20 @@
+{
+  "short_name": "FireBlog",
+  "name": "FireBlog",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "96x96 32x32 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#fff",
+  "background_color": "#ffffff"
+}

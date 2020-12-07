@@ -1,0 +1,16 @@
+:root {
+  --theme-bg: #fff;
+  --theme-txt: #222;
+}
+
+meta {transition: background-color .4s;}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-bg);
+  color: var(--theme-txt);
+  font-size: 18px;
+  transition: background-color .4s;
+}

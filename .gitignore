@@ -1,0 +1,10 @@
+.cache
+dist
+build
+node_modules
+yarn.lock
+.env
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules
