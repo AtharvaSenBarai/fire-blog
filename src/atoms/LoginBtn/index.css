@@ -1,0 +1,14 @@
+#login-btn {
+  outline: none;
+  border: 0;
+  border-radius: 4px;
+  display: block;
+  margin: 10px auto;
+  padding: 8px 12px;
+  letter-spacing: 2px;
+  font-size: 18px;
+  font-family: Ubuntu;
+  font-weight: 600;
+  color: #fff;
+  background-color: teal;
+}
