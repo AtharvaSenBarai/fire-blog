@@ -1,0 +1,6 @@
+.card {
+  padding: 24px 0;
+  background-color: var(--theme-bg);
+  color: var(--theme-txt);
+  transition: background-color .4s;
+}
