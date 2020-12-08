@@ -1,0 +1,12 @@
+.skill {
+  display: inline-block;
+  cursor: pointer;
+  margin-top: 4px;
+  padding: 2px 4px;
+  box-shadow: 0 0 1px grey;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: Ubuntu;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
