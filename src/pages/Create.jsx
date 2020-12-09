@@ -42,7 +42,7 @@ const Create = () => {
         })
         .then(() => dispatch({type: 'SUCCESSED'}))
         .catch((err) => dispatch({type: 'SET_ERROR', data: err.message}));
-    } else alert('Please Fill All Of The Fields!');
+    } else dispatch({type: 'SET_ERROR', data: 'Please fill all of the fields!'});
   };
 
   return (

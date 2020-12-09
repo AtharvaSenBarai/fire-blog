@@ -19,9 +19,9 @@ const createReducer = (state, action) => {
     case 'SET_EDITOR_HTML':
       return {...state, editorHTML: action.data};
     case 'SUCCESSED':
-      return {...state, successed: true};
+      return {...state, failed: false, successed: true};
     case 'SET_ERROR':
-      return {...state, failed: true, errorTxt: action.data};
+      return {...state, successed: false, failed: true, errorTxt: action.data};
     default:
       return state;
   }
