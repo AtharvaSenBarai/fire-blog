@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import LoginError from '../atoms/LoginError';
+import StatusText from '../atoms/StatusText';
 import LoginForm from '../molecules/LoginForm';
 
 const Login = () => {
@@ -11,7 +11,6 @@ const Login = () => {
   const handlePassword = (e) => setPassword(e.target.value);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     alert('LOGGED IN!');
   };
 
@@ -24,7 +23,7 @@ const Login = () => {
         handlePassword={handlePassword}
         handleSubmit={handleSubmit}
       />
-      <LoginError error="User doesn't exist!" />
+      <StatusText positive={false} text="User doesn't exist!" />
     </>
   );
 };

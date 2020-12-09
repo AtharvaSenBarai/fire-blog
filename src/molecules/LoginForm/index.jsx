@@ -1,14 +1,14 @@
 import React from 'react';
-import LoginBtn from '../../atoms/LoginBtn';
-import LoginInput from '../../atoms/LoginInput';
+import Button from '../../atoms/Button';
+import Input from '../../atoms/Input';
 
 const LoginForm = ({email, handleEmail, password, handlePassword, handleSubmit}) => {
   return (
-    <form onSubmit={handleSubmit}>
-      <LoginInput type="email" value={email} onChange={handleEmail} placeholder="E-mail" />
-      <LoginInput type="password" value={password} onChange={handlePassword} placeholder="Password" />
-      <LoginBtn />
-    </form>
+    <div>
+      <Input type="email" value={email} onChange={handleEmail} placeholder="E-mail" />
+      <Input type="password" value={password} onChange={handlePassword} placeholder="Password" />
+      <Button text="login" bgColor="#399" func={handleSubmit} />
+    </div>
   );
 };
 

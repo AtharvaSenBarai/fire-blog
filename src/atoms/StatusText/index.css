@@ -1,5 +1,4 @@
-#login-error {
-  color: crimson;
+.status-text {
   font-family: Ubuntu;
   font-size: 16px;
   font-weight: 600;

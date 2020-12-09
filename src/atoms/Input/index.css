@@ -1,16 +1,16 @@
-.login-input {
+.input {
   background-color: var(--theme-bg);
   color: var(--theme-txt);
   outline: none;
   border: 0;
-  border-bottom: 4px solid #dc143caa;
   display: block;
   margin: 60px auto 40px;
   font-size: 22px;
   transition-duration: .4s;
+  text-align: center;
 }
 
-.login-input::placeholder {
+.input::placeholder {
   color: var(--theme-txt);
   opacity: 0.6;
 }
