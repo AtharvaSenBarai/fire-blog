@@ -25,6 +25,7 @@ const PostDetails = (props) => {
   }, [props.location.pathname]);
 
   if (posts && post) {
+    // Check if the object has any property
     if (post.title) {
       return (
         <>
