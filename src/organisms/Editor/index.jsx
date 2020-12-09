@@ -36,7 +36,7 @@ const Editor = ({
           Go to the post
         </Link>
       )}
-      {failed && <StatusText positive={true} text={errorTxt} />}
+      {failed && <StatusText positive={false} text={errorTxt} />}
       <QuillEditor value={editorHTML} onChange={setEditorHTML} />
       <Button text={showHTML ? 'hide html' : 'show html'} func={toggleShowHTML} bgColor="teal" />
       {showHTML && <RawHtml content={editorHTML} />}
