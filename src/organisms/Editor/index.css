@@ -1,0 +1,10 @@
+#go-to-post {
+  display: block;
+  margin-bottom: 20px;
+  text-decoration: none;
+  text-align: center;
+  font-size: 20px;
+  font-family: Ubuntu;
+  font-weight: 600;
+  color: #039be5;
+}

@@ -1,0 +1,16 @@
+.text-area {
+  background-color: var(--theme-bg);
+  color: var(--theme-txt);
+  outline: none;
+  display: block;
+  margin: 60px auto 40px;
+  font-size: 18px;
+  transition-duration: .4s;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.text-area::placeholder {
+  color: var(--theme-txt);
+  opacity: 0.6;
+}
