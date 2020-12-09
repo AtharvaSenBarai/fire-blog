@@ -6,6 +6,7 @@
   display: block;
   margin: 60px auto 40px;
   font-size: 22px;
+  font-family: Ubuntu;
   transition-duration: .4s;
   text-align: center;
 }

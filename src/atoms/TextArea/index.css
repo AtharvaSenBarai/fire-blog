@@ -4,6 +4,8 @@
   outline: none;
   display: block;
   margin: 60px auto 40px;
+  font-family: 'PT Serif';
+  letter-spacing: 0.4px;
   font-size: 18px;
   transition-duration: .4s;
   width: 100%;
