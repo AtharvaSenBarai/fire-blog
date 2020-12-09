@@ -3,6 +3,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ContextProvider from './Context';
 import Header from './organisms/Header';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import PostDetails from './pages/PostDetails';
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/posts/:slug" component={PostDetails} />
+          <Route exact path="/login" component={Login} />
         </Switch>
       </ContextProvider>
     </BrowserRouter>
