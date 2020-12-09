@@ -32,7 +32,7 @@ const Editor = ({
       <Button text="send" func={handleSend} bgColor="teal" />
       {successed && <StatusText positive={true} text="Sending Successed!" />}
       {successed && (
-        <Link id="go-to-post" to={'/' + slug}>
+        <Link id="go-to-post" to={'/posts/' + slug}>
           Go to the post
         </Link>
       )}
