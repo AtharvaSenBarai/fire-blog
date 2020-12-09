@@ -1,4 +1,5 @@
 import React, {useContext} from 'react';
+import StatusText from '../atoms/StatusText';
 import {Context} from '../Context';
 import Bio from '../molecules/Bio';
 import PostList from '../organisms/PostList';
@@ -9,7 +10,15 @@ const Home = () => {
   return (
     <>
       <Bio />
-      {posts ? posts.length === 0 ? <p>Nothing Posted!</p> : <PostList posts={posts} /> : <div className="loading" />}
+      {posts ? (
+        posts.length === 0 ? (
+          <StatusText positive={false} text="Nothing Posted!" />
+        ) : (
+          <PostList posts={posts} />
+        )
+      ) : (
+        <div className="loading" />
+      )}
     </>
   );
 };
