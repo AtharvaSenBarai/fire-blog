@@ -3,7 +3,9 @@ import moment from 'moment';
 import './index.css';
 
 const CardDate = ({time}) => {
-  const formatted = moment(time).format('DD MMM YYYY');
+  //Comment out this and comment the other when trying templates
+  //const formatted = moment(time).format('DD MMM YYYY');
+  const formatted = moment(time.toDate()).format('DD MMM YYYY');
 
   return <p className="card-date">{formatted}</p>;
 };
