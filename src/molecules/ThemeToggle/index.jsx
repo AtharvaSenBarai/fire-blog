@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Toggle from 'react-toggle';
-import ToggleBtn from '../../atoms/ToggleBtn';
+import ToggleIcon from '../../atoms/ToggleIcon';
 import './index.css';
 
 const ThemeToggle = () => {
@@ -31,8 +31,8 @@ const ThemeToggle = () => {
       defaultChecked={theme === 'light'}
       className="right"
       icons={{
-        checked: <ToggleBtn name="sun" color="yellow" />,
-        unchecked: <ToggleBtn name="moon" color="grey" />,
+        checked: <ToggleIcon name="sun" color="yellow" />,
+        unchecked: <ToggleIcon name="moon" color="lightgrey" />,
       }}
       onChange={handleThemeChange}
     />
