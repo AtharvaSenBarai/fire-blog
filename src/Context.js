@@ -23,7 +23,7 @@ const ContextProvider = ({children}) => {
       });
   }, []);
 
-  return <Context.Provider value={{user, posts, setPosts}}>{children}</Context.Provider>;
+  return <Context.Provider value={{user, posts}}>{children}</Context.Provider>;
 };
 
 export default ContextProvider;

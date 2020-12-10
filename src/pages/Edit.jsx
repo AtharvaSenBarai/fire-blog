@@ -1,9 +1,13 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useContext, useEffect, useReducer} from 'react';
+import StatusText from '../atoms/StatusText';
+import {Context} from '../Context';
 import db from '../firebase';
 import Editor from '../organisms/Editor';
 import editReducer, {initialState} from '../reducers/editReducer';
 
 const Edit = (props) => {
+  const {user} = useContext(Context);
+
   const [state, dispatch] = useReducer(editReducer, initialState);
 
   const slug = props.match.params.slug;
@@ -67,21 +71,26 @@ const Edit = (props) => {
     } else dispatch({type: 'SET_ERROR', data: 'Please fill all of the fields!'});
   };
 
-  return (
-    <Editor
-      title={title}
-      handleTitle={handleTitle}
-      excerpt={excerpt}
-      handleExcerpt={handleExcerpt}
-      slug={slug}
-      successed={successed}
-      failed={failed}
-      errorTxt={errorTxt}
-      editorHTML={editorHTML}
-      setEditorHTML={setEditorHTML}
-      handleSend={handleSend}
-    />
-  );
+  if (user) {
+    return (
+      <Editor
+        title={title}
+        handleTitle={handleTitle}
+        excerpt={excerpt}
+        handleExcerpt={handleExcerpt}
+        slug={slug}
+        successed={successed}
+        failed={failed}
+        errorTxt={errorTxt}
+        editorHTML={editorHTML}
+        setEditorHTML={setEditorHTML}
+        handleSend={handleSend}
+      />
+    );
+  } else {
+    setTimeout(() => props.history.push('/'), 4000);
+    return <StatusText positive={false} text="You should login first! Redirecting..." />;
+  }
 };
 
 export default Edit;

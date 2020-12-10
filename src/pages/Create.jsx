@@ -1,10 +1,14 @@
-import React, {useReducer} from 'react';
+import React, {useContext, useReducer} from 'react';
 import db from '../firebase';
 import uniqid from 'uniqid';
 import Editor from '../organisms/Editor';
 import createReducer, {initialState} from '../reducers/createReducer';
+import {Context} from '../Context';
+import StatusText from '../atoms/StatusText';
 
-const Create = () => {
+const Create = (props) => {
+  const {user} = useContext(Context);
+
   const [state, dispatch] = useReducer(createReducer, initialState);
 
   const handleTitle = (e) => dispatch({type: 'SET_TITLE', data: e.target.value});
@@ -45,21 +49,26 @@ const Create = () => {
     } else dispatch({type: 'SET_ERROR', data: 'Please fill all of the fields!'});
   };
 
-  return (
-    <Editor
-      title={title}
-      handleTitle={handleTitle}
-      excerpt={excerpt}
-      handleExcerpt={handleExcerpt}
-      slug={slug}
-      successed={successed}
-      failed={failed}
-      errorTxt={errorTxt}
-      editorHTML={editorHTML}
-      setEditorHTML={setEditorHTML}
-      handleSend={handleSend}
-    />
-  );
+  if (user) {
+    return (
+      <Editor
+        title={title}
+        handleTitle={handleTitle}
+        excerpt={excerpt}
+        handleExcerpt={handleExcerpt}
+        slug={slug}
+        successed={successed}
+        failed={failed}
+        errorTxt={errorTxt}
+        editorHTML={editorHTML}
+        setEditorHTML={setEditorHTML}
+        handleSend={handleSend}
+      />
+    );
+  } else {
+    setTimeout(() => props.history.push('/'), 4000);
+    return <StatusText positive={false} text="You should login first! Redirecting..." />;
+  }
 };
 
 export default Create;

@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import firebase from 'firebase/app';
 import StatusText from '../atoms/StatusText';
 import LoginForm from '../molecules/LoginForm';
+import {Context} from '../Context';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [authError, setAuthError] = useState(null);
+
+  const {user} = useContext(Context);
 
   const handleEmail = (e) => setEmail(e.target.value); // No, it's not trimmable 🙄
 
@@ -35,18 +38,23 @@ const Login = (props) => {
     }
   };
 
-  return (
-    <div onKeyDown={handleKeyDown}>
-      <LoginForm
-        email={email}
-        handleEmail={handleEmail}
-        password={password}
-        handlePassword={handlePassword}
-        handleSubmit={handleSubmit}
-      />
-      {authError && <StatusText positive={false} text={authError} />}
-    </div>
-  );
+  if (!user) {
+    return (
+      <div onKeyDown={handleKeyDown}>
+        <LoginForm
+          email={email}
+          handleEmail={handleEmail}
+          password={password}
+          handlePassword={handlePassword}
+          handleSubmit={handleSubmit}
+        />
+        {authError && <StatusText positive={false} text={authError} />}
+      </div>
+    );
+  } else {
+    setTimeout(() => props.history.push('/'), 4000);
+    return <StatusText positive={false} text="You've already logged in! Redirecting..." />;
+  }
 };
 
 export default Login;
