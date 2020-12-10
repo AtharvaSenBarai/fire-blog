@@ -1,0 +1,39 @@
+.action-option {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 0 0 4px grey;
+  background-color: white;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  height: 30px;
+  padding: 4px 8px;
+  background-color: white;
+  transition: all .4s;
+  color: #222;
+  cursor: pointer;
+}
+
+.action-option i {
+  margin: 0 4px;
+  min-width: 20px;
+}
+
+.action-option span {
+  font-family: Ubuntu;
+  font-weight: 600;
+  max-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: all .4s;
+}
+
+.action-option:hover {
+  border-radius: 8px;
+}
+
+.action-option:hover span {
+  max-width: 80px;
+}
