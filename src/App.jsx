@@ -6,6 +6,7 @@ import Create from './pages/Create';
 import Edit from './pages/Edit';
 import Home from './pages/Home';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import PostDetails from './pages/PostDetails';
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/create" component={Create} />
           <Route path="/edit/:slug" component={Edit} />
+          <Route component={NotFound} />
         </Switch>
       </ContextProvider>
     </BrowserRouter>
