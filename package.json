@@ -8,7 +8,10 @@
   "private": true,
   "scripts": {
     "start": "parcel public/index.html",
-    "build": "parcel build public/index.html --no-source-maps"
+    "prebuild": "rmdir dist /s /q",
+    "build": "parcel build public/index.html --no-source-maps",
+    "predeploy": "yarn build",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "firebase": "^8.1.2",
