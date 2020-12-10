@@ -4,6 +4,7 @@ build
 node_modules
 yarn.lock
 .env
+.firebase
 .firebaserc
 firebase.json
 firestore.indexes.json
