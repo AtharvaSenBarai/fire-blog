@@ -21,7 +21,11 @@ const Create = (props) => {
 
   const handleSend = () => {
     if (editorHTML !== '' && title !== '' && excerpt !== '') {
-      const uniqueSlug = title.split(' ').join('-') + '-' + uniqid();
+      // Replace special characters with '-' to avoid unsupported post links.
+      const filteredSlug = Array.from(title.split(' ').join('-')).map((letter) =>
+        /^[a-zA-Z0-9_.-]*$/.test(letter) ? letter : '-',
+      );
+      const uniqueSlug = filteredSlug.join('') + '-' + uniqid();
       dispatch({type: 'SET_SLUG', data: uniqueSlug});
       const noNbsp = editorHTML.replace(/&nbsp;/g, ' ');
       const time = new Date();
