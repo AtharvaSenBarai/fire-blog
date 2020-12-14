@@ -8,3 +8,7 @@
   right: 40px;
   width: 60px;
 }
+
+#floating-menu:hover #action-btn {
+  transform: rotate(-90deg);
+}

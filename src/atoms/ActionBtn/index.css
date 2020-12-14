@@ -14,10 +14,6 @@
   align-items: center;
 }
 
-#action-btn:hover {
-  transform: rotate(-90deg);
-}
-
 #action-btn i {
   color: white;
 }
