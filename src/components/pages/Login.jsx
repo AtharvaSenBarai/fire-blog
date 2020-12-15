@@ -1,8 +1,8 @@
 import React, {useContext, useState} from 'react';
 import firebase from 'firebase/app';
+import {Context} from '../../Context';
 import StatusText from '../atoms/StatusText';
 import LoginForm from '../molecules/LoginForm';
-import {Context} from '../Context';
 
 const Login = (props) => {
   const [email, setEmail] = useState('');

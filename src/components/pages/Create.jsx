@@ -1,40 +1,15 @@
-import React, {useContext, useEffect, useReducer} from 'react';
-import StatusText from '../atoms/StatusText';
-import {Context} from '../Context';
-import db from '../firebase';
+import React, {useContext, useReducer} from 'react';
+import db from '../../firebase';
+import uniqid from 'uniqid';
 import Editor from '../organisms/Editor';
-import editReducer, {initialState} from '../reducers/editReducer';
+import createReducer, {initialState} from '../../reducers/createReducer';
+import {Context} from '../../Context';
+import StatusText from '../atoms/StatusText';
 
-const Edit = (props) => {
+const Create = (props) => {
   const {user} = useContext(Context);
 
-  const [state, dispatch] = useReducer(editReducer, initialState);
-
-  const slug = props.match.params.slug;
-
-  useEffect(() => getSetData(), [props.location.pathname]);
-
-  const getSetData = () => {
-    db.collection('posts')
-      .doc(slug)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          dispatch({type: 'SET_ORIGINAL_DATA', data: doc.data()});
-        } else props.history.push('/');
-      })
-      .catch((err) => console.log(err));
-
-    db.collection('excerpts')
-      .doc(slug)
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          dispatch({type: 'SET_EXCERPT', data: doc.data().excerpt});
-        } else props.history.push('/');
-      })
-      .catch((err) => console.log(err));
-  };
+  const [state, dispatch] = useReducer(createReducer, initialState);
 
   const handleTitle = (e) => dispatch({type: 'SET_TITLE', data: e.target.value});
 
@@ -42,26 +17,33 @@ const Edit = (props) => {
 
   const setEditorHTML = (data) => dispatch({type: 'SET_EDITOR_HTML', data});
 
-  const {title, time, excerpt, successed, failed, errorTxt, editorHTML} = state;
+  const {title, excerpt, slug, successed, failed, errorTxt, editorHTML} = state;
 
   const handleSend = () => {
     if (editorHTML !== '' && title !== '' && excerpt !== '') {
+      // Replace special characters with '-' to avoid unsupported post links.
+      const filteredSlug = Array.from(title.split(' ').join('-')).map((letter) =>
+        /^[a-zA-Z0-9_.-]*$/.test(letter) ? letter : '-',
+      );
+      const uniqueSlug = filteredSlug.join('') + '-' + uniqid();
+      dispatch({type: 'SET_SLUG', data: uniqueSlug});
       const noNbsp = editorHTML.replace(/&nbsp;/g, ' ');
+      const time = new Date();
       db.collection('posts')
-        .doc(slug)
+        .doc(uniqueSlug)
         .set({
-          slug,
+          slug: uniqueSlug,
           title,
           content: noNbsp,
           time,
         })
-        .then(() => console.log('POST UPDATED!'))
-        .catch((err) => console.log('POST UPDATING ERROR =>', err));
+        .then(() => console.log('POST SAVED!'))
+        .catch((err) => console.log('POST SAVING ERROR =>', err));
 
       db.collection('excerpts')
-        .doc(slug)
+        .doc(uniqueSlug)
         .set({
-          slug,
+          slug: uniqueSlug,
           title,
           excerpt,
           time,
@@ -93,4 +75,4 @@ const Edit = (props) => {
   }
 };
 
-export default Edit;
+export default Create;

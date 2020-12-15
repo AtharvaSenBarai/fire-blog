@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
-import StatusText from '../atoms/StatusText';
-import {Context} from '../Context';
 import firebase from 'firebase/app';
-import db from '../firebase';
+import {Context} from '../../Context';
+import db from '../../firebase';
+import StatusText from '../atoms/StatusText';
 import Bio from '../molecules/Bio';
 import Post from '../molecules/Post';
 import FloatingMenu from '../organisms/FloatingMenu';

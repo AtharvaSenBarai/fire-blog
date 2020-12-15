@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ContextProvider from './Context';
-import Header from './organisms/Header';
-import Create from './pages/Create';
-import Edit from './pages/Edit';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import PostDetails from './pages/PostDetails';
+import Header from './components/organisms/Header';
+import Create from './components/pages/Create';
+import Edit from './components/pages/Edit';
+import Home from './components/pages/Home';
+import Login from './components/pages/Login';
+import NotFound from './components/pages/NotFound';
+import PostDetails from './components/pages/PostDetails';
 
 const App = () => {
   return (
