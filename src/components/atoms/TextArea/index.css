@@ -10,6 +10,7 @@
   font-size: 18px;
   transition-duration: .4s;
   width: 100%;
+  min-height: 130px;
   box-sizing: border-box;
 }
 
