@@ -1,0 +1,25 @@
+.dropped-image-overlay {
+  height: 120px;
+  background-color: #0006;
+  display: block;
+  position: static;
+  transform: translateY(-100%);
+  transition-duration: .4s;
+}
+
+.copy-link {
+  color: #fff;
+  opacity: 0.6;
+  position: absolute;
+  font-family: Ubuntu;
+  font-size: 16px;
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.copy-link:hover {
+  opacity: 1;
+}

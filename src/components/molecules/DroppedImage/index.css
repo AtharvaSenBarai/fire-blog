@@ -1,0 +1,19 @@
+.dropped-image {
+  min-width: 120px;
+  height: 120px;
+  object-fit: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+  overflow: hidden;
+  transition-duration: .4s;
+  margin-right: 12px;
+}
+
+.dropped-image:hover .dropped-image-overlay {
+  transform: translate(0);
+}

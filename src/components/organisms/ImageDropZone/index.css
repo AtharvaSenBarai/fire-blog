@@ -1,0 +1,12 @@
+#image-drop-zone {
+  border: 4px dashed grey;
+  border-radius: 12px;
+  padding: 16px;
+  min-height: 120px;
+  transition-duration: .4s;
+  display: flex;
+}
+
+input[type=file] {
+  visibility: hidden;
+}
