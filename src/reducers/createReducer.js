@@ -1,4 +1,6 @@
 export const initialState = {
+  droppedImages: [],
+  isUploading: false,
   title: '',
   excerpt: '',
   slug: '',
@@ -10,6 +12,10 @@ export const initialState = {
 
 const createReducer = (state, action) => {
   switch (action.type) {
+    case 'ADD_DROPPED_IMAGE':
+      return {...state, droppedImages: [...state.droppedImages, action.data]};
+    case 'SET_IS_UPLOADING':
+      return {...state, isUploading: action.data};
     case 'SET_TITLE':
       return {...state, title: action.data};
     case 'SET_EXCERPT':

@@ -5,11 +5,30 @@ import Editor from '../organisms/Editor';
 import createReducer, {initialState} from '../../reducers/createReducer';
 import {Context} from '../../Context';
 import StatusText from '../atoms/StatusText';
+import ImageDropZone from '../organisms/ImageDropZone';
+
+const PROXY =
+  !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
 
 const Create = (props) => {
   const {user} = useContext(Context);
 
   const [state, dispatch] = useReducer(createReducer, initialState);
+
+  const uploadImage = async (file) => {
+    dispatch({type: 'SET_IS_UPLOADING', data: true});
+    const apiKey = process.env.REACT_IMGBB_API_KEY;
+    const data = new FormData();
+    data.append('image', file);
+    await fetch(PROXY + 'https://api.imgbb.com/1/upload?key=' + apiKey, {
+      method: 'POST',
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((res) => dispatch({type: 'ADD_DROPPED_IMAGE', data: res.data}))
+      .catch((err) => console.log(err));
+    dispatch({type: 'SET_IS_UPLOADING', data: false});
+  };
 
   const handleTitle = (e) => dispatch({type: 'SET_TITLE', data: e.target.value});
 
@@ -17,7 +36,7 @@ const Create = (props) => {
 
   const setEditorHTML = (data) => dispatch({type: 'SET_EDITOR_HTML', data});
 
-  const {title, excerpt, slug, successed, failed, errorTxt, editorHTML} = state;
+  const {droppedImages, isUploading, title, excerpt, slug, successed, failed, errorTxt, editorHTML} = state;
 
   const handleSend = () => {
     if (editorHTML !== '' && title !== '' && excerpt !== '') {
@@ -55,19 +74,22 @@ const Create = (props) => {
 
   if (user) {
     return (
-      <Editor
-        title={title}
-        handleTitle={handleTitle}
-        excerpt={excerpt}
-        handleExcerpt={handleExcerpt}
-        slug={slug}
-        successed={successed}
-        failed={failed}
-        errorTxt={errorTxt}
-        editorHTML={editorHTML}
-        setEditorHTML={setEditorHTML}
-        handleSend={handleSend}
-      />
+      <>
+        <ImageDropZone droppedImages={droppedImages} isUploading={isUploading} uploadImage={uploadImage} />
+        <Editor
+          title={title}
+          handleTitle={handleTitle}
+          excerpt={excerpt}
+          handleExcerpt={handleExcerpt}
+          slug={slug}
+          successed={successed}
+          failed={failed}
+          errorTxt={errorTxt}
+          editorHTML={editorHTML}
+          setEditorHTML={setEditorHTML}
+          handleSend={handleSend}
+        />
+      </>
     );
   } else {
     setTimeout(() => props.history.push('/'), 4000);
