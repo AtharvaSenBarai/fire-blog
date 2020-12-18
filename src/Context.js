@@ -27,7 +27,9 @@ const ContextProvider = ({children, history}) => {
 
   useEffect(() => {
     let unsubscribe = tinykeys(window, {
-      'l o g i n': () => history.push('/login'),
+      'l o g i n': () => {
+        window.location.pathname === '/' && history.push('/login');
+      },
     });
 
     return () => unsubscribe();
