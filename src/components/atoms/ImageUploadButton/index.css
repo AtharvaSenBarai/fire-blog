@@ -1,0 +1,17 @@
+#image-upload-btn {
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+  color: grey;
+  font-size: 22px;
+  border: 6px dashed grey;
+  border-radius: 6px;
+  cursor: pointer;
+  outline: none;
+  transition-duration: .4s;
+}
+
+#image-upload-btn:hover {
+  color: teal;
+  border-color: teal;
+}

@@ -1,0 +1,19 @@
+#image-upload-progress {
+  width: 120px;
+  height: 120px;
+  background-color: transparent;
+  color: grey;
+  border: 6px dashed grey;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+#image-upload-progress i {
+  font-size: 32px;
+  animation: spin 1.4s linear infinite;
+}
+
+@keyframes spin {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
