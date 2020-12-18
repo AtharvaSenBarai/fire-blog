@@ -4,9 +4,27 @@
   padding: 16px;
   min-height: 120px;
   transition-duration: .4s;
+}
+
+#added-images {
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+#added-images > * {
+  margin: 0 6px 12px;
+}
+
+#drop-info {
+  margin: 10px 0 0;
+  text-align: center;
+  color: grey;
+  font-family: Ubuntu;
+  font-weight: 600;
 }
 
 input[type=file] {
   visibility: hidden;
+  position: absolute;
 }
