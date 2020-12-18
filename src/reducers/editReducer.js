@@ -1,4 +1,6 @@
 export const initialState = {
+  droppedImages: [],
+  isUploading: false,
   title: '',
   time: '',
   editorHTML: '',
@@ -10,6 +12,10 @@ export const initialState = {
 
 const editReducer = (state, action) => {
   switch (action.type) {
+    case 'ADD_DROPPED_IMAGE':
+      return {...state, droppedImages: [...state.droppedImages, action.data]};
+    case 'SET_IS_UPLOADING':
+      return {...state, isUploading: action.data};
     case 'SET_ORIGINAL_DATA':
       const {title, time, content} = action.data;
       return {...state, title, time, editorHTML: content};
