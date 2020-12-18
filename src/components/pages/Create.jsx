@@ -6,9 +6,7 @@ import createReducer, {initialState} from '../../reducers/createReducer';
 import {Context} from '../../Context';
 import StatusText from '../atoms/StatusText';
 import ImageDropZone from '../organisms/ImageDropZone';
-
-const PROXY =
-  !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'https://cors-anywhere.herokuapp.com/' : '';
+import uploadImageFile from '../../uploadImageFile';
 
 const Create = (props) => {
   const {user} = useContext(Context);
@@ -17,14 +15,7 @@ const Create = (props) => {
 
   const uploadImage = async (file) => {
     dispatch({type: 'SET_IS_UPLOADING', data: true});
-    const apiKey = process.env.REACT_IMGBB_API_KEY;
-    const data = new FormData();
-    data.append('image', file);
-    await fetch(PROXY + 'https://api.imgbb.com/1/upload?key=' + apiKey, {
-      method: 'POST',
-      body: data,
-    })
-      .then((res) => res.json())
+    await uploadImageFile(file)
       .then((res) => dispatch({type: 'ADD_DROPPED_IMAGE', data: res.data}))
       .catch((err) => console.log(err));
     dispatch({type: 'SET_IS_UPLOADING', data: false});
