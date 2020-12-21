@@ -1,12 +1,10 @@
 import React, {useState, createContext, useEffect} from 'react';
 import firebase from 'firebase/app';
 import db from './firebase';
-import tinykeys from 'tinykeys';
-import {withRouter} from 'react-router-dom';
 
 export const Context = createContext();
 
-const ContextProvider = ({children, history}) => {
+const ContextProvider = ({children}) => {
   const [user, setUser] = useState(null);
   const [posts, setPosts] = useState(null);
 
@@ -25,17 +23,7 @@ const ContextProvider = ({children, history}) => {
       });
   }, []);
 
-  useEffect(() => {
-    let unsubscribe = tinykeys(window, {
-      'l o g i n': () => {
-        window.location.pathname === '/' && history.push('/login');
-      },
-    });
-
-    return () => unsubscribe();
-  }, []);
-
   return <Context.Provider value={{user, posts}}>{children}</Context.Provider>;
 };
 
-export default withRouter(ContextProvider);
+export default ContextProvider;

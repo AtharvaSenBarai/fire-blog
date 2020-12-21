@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import tinykeys from 'tinykeys';
 import Bio from '../molecules/Bio';
 import PostList from '../organisms/PostList';
 
-const Home = () => {
+const Home = ({history}) => {
+  useEffect(() => {
+    let unsubscribe = tinykeys(window, {
+      'l o g i n': () => history.push('/login'),
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const posts = [
     {
       slug: 'a-dummy-slug-dg1s5',

@@ -1,5 +1,6 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import firebase from 'firebase/app';
+import tinykeys from 'tinykeys';
 import {Context} from '../../Context';
 import StatusText from '../atoms/StatusText';
 import Bio from '../molecules/Bio';
@@ -11,12 +12,20 @@ const options = [
   {icon: 'sign-out-alt', color: 'crimson', txt: 'log out'},
 ];
 
-const Home = (props) => {
+const Home = ({history}) => {
   const {user, posts} = useContext(Context);
+
+  useEffect(() => {
+    let unsubscribe = tinykeys(window, {
+      'l o g i n': () => history.push('/login'),
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleAction = (action) => {
     if (action === 'write') {
-      props.history.push('/create');
+      history.push('/create');
     } else if (action === 'log out') {
       firebase.auth().signOut();
     }
