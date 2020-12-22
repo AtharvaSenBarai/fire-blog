@@ -23,12 +23,22 @@ The app is live on **Firebase**: <a href="https://blog-harky.web.app/" target="_
 <code>cd fire-blog</code>
 
 - Install dependencies with <br/>
-  - Npm <code>npm i</code> <br/>
+  - Npm: <code>npm i</code> <br/>
 or <br/>
-  - Yarn <code>yarn</code>
+  - Yarn: <code>yarn</code>
 <br/>
 
-> You should initialize a Firebase web app and configure the project.
+## 🧪 Testing with Static Data
+
+- Change all of the <code>pages</code> directories to <code>templates</code> in <code>App.jsx</code>
+
+- Import and use <code>Create</code> and <code>Edit</code> pages as <code>CreateEdit</code>
+
+- Go to <code>src > components > atoms > CardDate</code> and then comment out the 7th line, comment the 8th line to avoid date format error
+
+- Now you can run & test the project without Firebase initialization
+
+> You should initialize a Firebase web app and configure the project to use it with real data.
 ---
 
 ## MIT License
