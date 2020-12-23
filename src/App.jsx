@@ -8,6 +8,7 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import NotFound from './components/pages/NotFound';
 import PostDetails from './components/pages/PostDetails';
+import Footer from './components/molecules/Footer';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/edit/:slug" component={Edit} />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </ContextProvider>
     </BrowserRouter>
   );
