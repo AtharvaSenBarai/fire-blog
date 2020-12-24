@@ -4,3 +4,10 @@ footer {
   align-items: center;
   padding: 10px 0 30px;
 }
+
+@media only screen and (max-width: 640px) {
+  footer {
+    width: 100vw;
+    transform: translateX(-7.5vw);
+  }
+}
