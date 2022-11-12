@@ -3,13 +3,13 @@ import 'firebase/auth';
 import 'firebase/firestore';
 
 const config = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DB_URL,
-  projectId: process.env.REACT_APP_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MSG_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
+   apiKey: "AIzaSyDIdSpACQbc1-_JICLQ6gRjl_YrX25eiOA",
+  authDomain: "mini-diary-organization.firebaseapp.com",
+  databaseURL: "https://mini-diary-organization-default-rtdb.firebaseio.com",
+  projectId: "mini-diary-organization",
+  storageBucket: "mini-diary-organization.appspot.com",
+  messagingSenderId: "542075449644",
+  appId: "1:542075449644:web:26133a6448c78f79927c89",
 };
 
 const app = firebase.initializeApp(config);
